@@ -2,8 +2,15 @@ import { stat } from "fs";
 import { State } from "./state.js";
 
 export async function commandMap(state: State) {
+    let pageURL: string | undefined;
 
-    const response = state.pokeapi.fetchLocations();
+    if (state.nextLocationsURL === null){
+        pageURL = undefined;
+    } else {
+        pageURL = state.nextLocationsURL;
+    }
+
+    const response = state.pokeapi.fetchLocations(pageURL)
     const locations = await response;
     state.nextLocationsURL = locations.next;
     state.prevLocationsURL = locations.previous;
