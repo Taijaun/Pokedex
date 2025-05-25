@@ -1,5 +1,6 @@
 import * as readline from 'readline';
 
+
 export function cleanInput(input: string): string[] {
     const stringArray = input.trim().split(/\s+/);
 
@@ -20,8 +21,7 @@ export function startREPL() {
         if (inputArray.length === 0) {
             rl.prompt();
         } else {
-            console.log(`Your command was: ${inputArray[0]}`);
-            rl.prompt();
+
         }
     });
 
