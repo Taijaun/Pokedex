@@ -1,4 +1,5 @@
 import * as readline from 'readline';
+import { getCommands, CLICommand} from './commands.js';
 
 
 export function cleanInput(input: string): string[] {
@@ -17,12 +18,18 @@ export function startREPL() {
     rl.prompt()
     rl.on('line', (input) => {
         const inputArray = cleanInput(input);
+        const commandRegistry = getCommands();
 
         if (inputArray.length === 0) {
             rl.prompt();
         } else {
-
+            if (input in commandRegistry) {
+                commandRegistry[input].callback(commandRegistry)
+            }
+            rl.prompt();
         }
+
+
     });
 
 }

@@ -1,4 +1,4 @@
-import { commandExit } from "./command_exit";
+import { commandExit } from "./command_exit.js";
 
 export type CLICommand = {
     name: string;
