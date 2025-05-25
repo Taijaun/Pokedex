@@ -1,5 +1,6 @@
 import * as readline from 'readline';
-import { getCommands, CLICommand} from './commands.js';
+import { getCommands } from './commands.js';
+import { State } from './state.js';
 
 
 export function cleanInput(input: string): string[] {
@@ -8,25 +9,20 @@ export function cleanInput(input: string): string[] {
     return stringArray;
 }
 
-export function startREPL() {
-    const rl: readline.Interface = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-        prompt: "Pokedex > "
-    });
+export function startREPL(state: State) {
 
-    rl.prompt()
-    rl.on('line', (input) => {
+    state.cli.prompt
+    state.cli.on('line', (input) => {
         const inputArray = cleanInput(input);
-        const commandRegistry = getCommands();
+        
 
         if (inputArray.length === 0) {
-            rl.prompt();
+            state.cli.prompt();
         } else {
-            if (input in commandRegistry) {
-                commandRegistry[input].callback(commandRegistry)
+            if (input in state.commands) {
+                state.commands[input].callback(state)
             }
-            rl.prompt();
+            state.cli.prompt();
         }
 
 
