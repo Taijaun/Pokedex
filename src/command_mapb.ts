@@ -1,12 +1,13 @@
 import { State } from "./state.js";
 
-export async function commandMap(state: State) {
+export async function commandMapb(state: State) {
     let pageURL: string | undefined;
 
-    if (state.nextLocationsURL === null){
-        pageURL = undefined;
+    if (state.prevLocationsURL === null){
+        console.log("you're on the first page");
+        return
     } else {
-        pageURL = state.nextLocationsURL;
+        pageURL = state.prevLocationsURL;
     }
 
     const response = state.pokeapi.fetchLocations(pageURL)
