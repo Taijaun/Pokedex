@@ -14,6 +14,11 @@ export function getCommands(): Record<string, CLICommand> {
             name: "help",
             description: "Displays a help message",
             callback: commandHelp,
+        },
+        map: {
+            name: "map",
+            description: "Displays the names of 20 location areas in the Pokemon world",
+            callback: //todo
         }
     };
 }
