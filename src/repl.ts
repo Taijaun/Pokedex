@@ -19,9 +19,9 @@ export async function startREPL(state: State) {
         if (inputArray.length === 0) {
             state.cli.prompt();
         } else {
-            if (input in state.commands) {
+            if (inputArray[0] in state.commands) {
                 try {
-                await state.commands[input].callback(state);
+                await state.commands[inputArray[0]].callback(state, ...inputArray.slice(1));
                 } catch (err) {
                     if (err instanceof Error) {
                         console.error("An error occured:", err.message);
