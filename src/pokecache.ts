@@ -5,6 +5,12 @@ export type CacheEntry<T> = {
 
 export class Cache {
     #cache = new Map<string, CacheEntry<any>>();
+    #reapIntervalId: NodeJS.Timeout | undefined = undefined;
+    #interval: number;
+
+    constructor(interval: number){
+        this.#interval = interval
+    }
 
     add<T>(key: string, val: T){
         const newEntry: CacheEntry<T> = {
@@ -20,6 +26,14 @@ export class Cache {
         }
 
         return this.#cache.get(key)?.val;
+    }
+
+    #reap() {
+        for (const [key, entry] of this.#cache){
+            if (entry.createdAt < (Date.now() - this.#interval)){
+                this.#cache.delete(key);
+            }
+        }
     }
 
 }
