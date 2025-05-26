@@ -1,4 +1,4 @@
-import { State } from "./state.js";
+import { State } from "../state.js";
 
 export async function commandMapb(state: State) {
     let pageURL: string | undefined;

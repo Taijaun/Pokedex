@@ -1,5 +1,5 @@
 import * as readline from 'readline';
-import { getCommands } from './commands.js';
+import { getCommands } from './commands/commands.js';
 import { State } from './state.js';
 
 

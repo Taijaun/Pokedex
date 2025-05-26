@@ -1,6 +1,6 @@
 import { createInterface, type Interface } from "readline";
 import * as readline from 'readline';
-import { getCommands } from "./commands.js";
+import { getCommands } from "./commands/commands.js";
 import { PokeAPI } from "./pokeapi.js";
 
 

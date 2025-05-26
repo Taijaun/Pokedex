@@ -1,5 +1,4 @@
-import { getCommands } from "./commands.js";
-import { State } from "./state.js";
+import { State } from "../state.js";
 
 export async function commandHelp(state: State){
 
