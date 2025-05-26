@@ -2,6 +2,7 @@ import { createInterface, type Interface } from "readline";
 import * as readline from 'readline';
 import { getCommands } from "./commands/commands.js";
 import { PokeAPI } from "./pokeapi.js";
+import { Cache } from "./pokecache.js";
 
 
 export type CLICommand = {
@@ -26,11 +27,12 @@ export function initState(): State {
     });
 
     const commandRegistry = getCommands();
+    const cache = new Cache(20000)
 
     return {
         commands: commandRegistry,
         cli: rl,
-        pokeapi: new PokeAPI(),
+        pokeapi: new PokeAPI(cache),
         prevLocationsURL: null,
         nextLocationsURL: null,
     }

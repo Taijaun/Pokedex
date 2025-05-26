@@ -19,12 +19,15 @@ export class Cache {
             val: val,
         }
         this.#cache.set(key, newEntry);
+        console.log("************adding to cache***********")
     }
 
     get<T>(key: string) {
         if (!this.#cache.has(key)){
             return undefined;
         }
+
+        console.log("*********** loading from cache **************")
 
         return this.#cache.get(key)?.val;
     }
