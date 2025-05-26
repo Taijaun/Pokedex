@@ -28,7 +28,6 @@ export class PokeAPI {
         }
         const data: ShallowLocations = await response.json();
         this.cache.add(url, data);
-        console.log("ADDING TO CACHE", url)
         return data
 
     }
