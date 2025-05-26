@@ -36,4 +36,10 @@ export class Cache {
         }
     }
 
+    #startReapLoop() {
+        this.#reapIntervalId = setInterval(() => {
+            this.#reap();
+        }, this.#interval);
+    }
+
 }
