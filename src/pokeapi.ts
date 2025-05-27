@@ -51,6 +51,27 @@ export class PokeAPI {
         return data
     }
 
+    async fetchPokemonByName(pokemonName: string): Promise<PokemonCatch> {
+        const pokemonURL = `${PokeAPI.baseURL}/pokemon/${pokemonName}`;
+
+        const response = await fetch(pokemonURL);
+
+        if (!response.ok){
+            throw new Error("Invalid pokemon name!");
+        }
+
+        const data = await response.json();
+
+        const pokemon: PokemonCatch = {
+            id: data.id,
+            name: data.name,
+            base_experience: data.base_experience
+
+        }
+
+        return pokemon;
+    }
+
     
 }
 
@@ -143,4 +164,10 @@ export class PokeAPI {
     export interface Version2 {
         name: string
         url: string
+    }
+
+    export interface PokemonCatch {
+        id: number;
+        name: string;
+        base_experience: number;
     }
