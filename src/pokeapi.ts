@@ -65,7 +65,11 @@ export class PokeAPI {
         const pokemon: PokemonCatch = {
             id: data.id,
             name: data.name,
-            base_experience: data.base_experience
+            base_experience: data.base_experience,
+            height: data.height,
+            weight: data.weight,
+            stats: data.stats,
+            types: data.type
 
         }
 
@@ -170,4 +174,29 @@ export class PokeAPI {
         id: number;
         name: string;
         base_experience: number;
+        height: number;
+        weight: number;
+        stats: Stat[];
+        types: Type[];
+    }
+
+    export interface Stat {
+        base_stat: number;
+        effort: number;
+        stat: Stat2;
+    }
+
+    export interface Stat2 {
+        name: string;
+        url: string;
+    }
+
+    export interface Type {
+        slow: number;
+        type: Type2;
+    }
+
+    export interface Type2 {
+        name: string;
+        url: string;
     }
