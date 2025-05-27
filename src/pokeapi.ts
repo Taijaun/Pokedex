@@ -69,7 +69,7 @@ export class PokeAPI {
             height: data.height,
             weight: data.weight,
             stats: data.stats,
-            types: data.type
+            types: data.types
 
         }
 
@@ -180,6 +180,16 @@ export class PokeAPI {
         types: Type[];
     }
 
+    export interface Type {
+        slot: number;
+        type: Type2;
+    }
+
+    export interface Type2 {
+        name: string;
+        url: string;
+    }
+
     export interface Stat {
         base_stat: number;
         effort: number;
@@ -191,12 +201,4 @@ export class PokeAPI {
         url: string;
     }
 
-    export interface Type {
-        slow: number;
-        type: Type2;
-    }
-
-    export interface Type2 {
-        name: string;
-        url: string;
-    }
+    
