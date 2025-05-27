@@ -6,6 +6,7 @@ import { CLICommand } from "../state.js";
 import { commandExplore } from "./command_explore.js";
 import { commandCatch } from "./command_catch.js";
 import { commandInspect } from "./command_inspect.js";
+import { commandPokedex } from "./command_pokedex.js";
 
 
 export function getCommands(): Record<string, CLICommand> {
@@ -44,6 +45,11 @@ export function getCommands(): Record<string, CLICommand> {
             name: "inspect",
             description: "Shows the player details of a pokemon they have caught",
             callback: commandInspect
+        },
+        pokedex: {
+            name: "pokedex",
+            description: "Shows the player a list of all pokemon they have caught",
+            callback: commandPokedex
         }
     };
 }
